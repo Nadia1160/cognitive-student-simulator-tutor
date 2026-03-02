@@ -1,0 +1,45 @@
+﻿version: '3.8'
+
+services:
+  # Jupyter Notebook service
+  jupyter:
+    build: .
+    container_name: cognitive-tutor-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./src:/app/src
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+    networks:
+      - tutor-network
+
+  # Development environment with hot reload
+  dev:
+    build: .
+    container_name: cognitive-tutor-dev
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: tail -f /dev/null  # Keeps container running
+    networks:
+      - tutor-network
+
+  # For running tests
+  test:
+    build: .
+    container_name: cognitive-tutor-test
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: pytest tests/ -v
+    networks:
+      - tutor-network
+
+networks:
+  tutor-network:
+    driver: bridge

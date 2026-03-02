@@ -1,0 +1,70 @@
+﻿# Git
+.git
+.gitignore
+.github
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+venv
+env
+ENV
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache
+.coverage
+htmlcov
+.tox
+.mypy_cache
+.dmypy.json
+dmypy.json
+*.log
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.jupyter
+jupyter_config.py
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (large files)
+*.csv
+!data/*.json  # Keep JSON configs
+data/*.csv
+results/*.csv
+
+# Kaggle
+/kaggle
+input
+working
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
